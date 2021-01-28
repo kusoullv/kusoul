@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.kusoul.domain.Comment;
+import com.example.kusoul.mapper.CommentMapper;
 import com.example.kusoul.service.ICommentService;
-import com.maqh.demo.dao.ss.CommentMapper;
-import com.maqh.demo.domain.ss.Comment;
+
 import org.springframework.stereotype.Service;
 
 /**
