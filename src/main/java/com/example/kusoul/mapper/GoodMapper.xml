@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maqh.demo.dao.ss.GoodMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.maqh.demo.domain.ss.Good">
+                    <result column="id" property="id"/>
+                    <result column="title" property="title"/>
+                    <result column="description" property="description"/>
+                    <result column="typeID" property="typeID"/>
+                    <result column="price" property="price"/>
+                    <result column="totlieNumber" property="totlieNumber"/>
+                    <result column="status" property="status"/>
+                    <result column="createID" property="createID"/>
+                    <result column="createDate" property="createDate"/>
+                    <result column="updateID" property="updateID"/>
+                    <result column="updateDate" property="updateDate"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id, title, description, typeID, price, totlieNumber, status, createID, createDate, updateID, updateDate
+        </sql>
+
+</mapper>

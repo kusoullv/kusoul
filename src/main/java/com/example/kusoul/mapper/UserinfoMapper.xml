@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maqh.demo.dao.ss.UserinfoMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.maqh.demo.domain.ss.Userinfo">
+                    <result column="USERID" property="userid"/>
+                    <result column="PWD" property="pwd"/>
+                    <result column="USERNAME" property="username"/>
+                    <result column="ORDERID" property="orderid"/>
+                    <result column="PHONE" property="phone"/>
+                    <result column="ADDRESS" property="address"/>
+                    <result column="IDCARD" property="idcard"/>
+                    <result column="GENDER" property="gender"/>
+                    <result column="WECHATID" property="wechatid"/>
+                    <result column="EMAIL" property="email"/>
+                    <result column="CREATEDATE" property="createdate"/>
+                    <result column="CREATEID" property="createid"/>
+                    <result column="UPDATEDATE" property="updatedate"/>
+                    <result column="UPDATEDATEID" property="updatedateid"/>
+                    <result column="ROWID" property="rowid"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            USERID, PWD, USERNAME, ORDERID, PHONE, ADDRESS, IDCARD, GENDER, WECHATID, EMAIL, CREATEDATE, CREATEID, UPDATEDATE, UPDATEDATEID, ROWID
+        </sql>
+
+</mapper>
