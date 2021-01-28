@@ -34,7 +34,7 @@ public class AddressController {
 
 
     @ApiOperation(value = "新增")
-    @PostMapping()
+    @PostMapping("add")
     public int add(@RequestBody Address address){
         return addressService.add(address);
     }
