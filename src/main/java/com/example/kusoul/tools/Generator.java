@@ -80,10 +80,10 @@ public class Generator {
         String packgeName = scanner("包名");
         pc.setParent("com.maqh.demo");
         pc.setController("controller."+packgeName);
-        pc.setEntity("domain." + packgeName);
+        pc.setEntity("bean." + packgeName);
         pc.setService("service." + packgeName);
         pc.setServiceImpl("service." + packgeName +".impl");
-        pc.setMapper("dao." + packgeName);
+        pc.setMapper("mapper." + packgeName);
         mpg.setPackageInfo(pc);
 
         // 自定义配置

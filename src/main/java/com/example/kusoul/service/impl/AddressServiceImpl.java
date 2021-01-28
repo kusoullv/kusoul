@@ -5,10 +5,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.kusoul.domain.Address;
+import com.example.kusoul.bean.Address;
 import com.example.kusoul.mapper.AddressMapper;
 import com.example.kusoul.service.IAddressService;
 import org.springframework.stereotype.Service;
+
 
 /**
  * <p>
@@ -26,7 +27,7 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, Address> impl
         IPage<Address> wherePage = new Page<>(page, pageCount);
         Address where = new Address();
 
-        return   baseMapper.selectPage(wherePage, Wrappers.query(where));
+        return baseMapper.selectPage(wherePage, Wrappers.query(where));
     }
 
     @Override

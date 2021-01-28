@@ -1,8 +1,11 @@
 package com.example.kusoul.mapper;
 
 
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.kusoul.domain.Address;
+import com.example.kusoul.bean.Address;
+import org.apache.ibatis.annotations.Mapper;
+
 
 /**
  * <p>
@@ -12,6 +15,7 @@ import com.example.kusoul.domain.Address;
  * @author maqh
  * @since 2021-01-28
  */
+@Mapper
 public interface AddressMapper extends BaseMapper<Address> {
 
 }

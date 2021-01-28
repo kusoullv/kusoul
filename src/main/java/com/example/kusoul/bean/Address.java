@@ -1,4 +1,4 @@
-package com.example.kusoul.domain;
+package com.example.kusoul.bean;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
@@ -17,10 +17,11 @@ import java.util.Date;
  * @author maqh
  * @since 2021-01-28
  */
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Address对象", description="")
+@ApiModel(value="Address", description="")
 public class Address implements Serializable {
 
     private static final long serialVersionUID = 1L;

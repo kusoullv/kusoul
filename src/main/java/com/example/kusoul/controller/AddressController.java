@@ -2,7 +2,7 @@ package com.example.kusoul.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.example.kusoul.domain.Address;
+import com.example.kusoul.bean.Address;
 import com.example.kusoul.service.IAddressService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -24,14 +25,12 @@ import javax.annotation.Resource;
  */
 @Api(tags = {""})
 @RestController
-@RequestMapping("/address")
 public class AddressController {
 
     private Logger log = LoggerFactory.getLogger(getClass());
 
     @Resource
     private IAddressService addressService;
-
 
     @ApiOperation(value = "新增")
     @PostMapping("add")
@@ -40,13 +39,13 @@ public class AddressController {
     }
 
     @ApiOperation(value = "删除")
-    @DeleteMapping("{id}")
+    @DeleteMapping("delete{id}")
     public int delete(@PathVariable("id") Long id){
         return addressService.delete(id);
     }
 
     @ApiOperation(value = "更新")
-    @PutMapping()
+    @PutMapping("update")
     public int update(@RequestBody Address address){
         return addressService.updateData(address);
     }
@@ -56,16 +55,26 @@ public class AddressController {
         @ApiImplicitParam(name = "page", value = "页码"),
         @ApiImplicitParam(name = "pageCount", value = "每页条数")
     })
-    @GetMapping()
+    @GetMapping("findListByPage")
     public IPage<Address> findListByPage(@RequestParam Integer page,
                                          @RequestParam Integer pageCount){
         return addressService.findListByPage(page, pageCount);
     }
 
     @ApiOperation(value = "id查询")
-    @GetMapping("{id}")
+    @GetMapping("findById{id}")
     public Address findById(@PathVariable Long id){
         return addressService.findById(id);
     }
+
+
+    @ApiOperation(value = "id查询")
+    @GetMapping("aaa")
+    public String aaa(){
+        String ss = "sdfds";
+        ss = ss +"fsdfds";
+        return "";
+    }
+
 
 }
