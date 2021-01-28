@@ -1,4 +1,4 @@
-package com.example.kusoul.domain;
+package com.example.kusoul.bean;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;

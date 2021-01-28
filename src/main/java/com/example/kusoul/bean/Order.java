@@ -1,4 +1,4 @@
-package com.example.kusoul.domain;
+package com.example.kusoul.bean;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.sql.Blob;
+import java.util.Date;
 
 /**
  * <p>
@@ -20,15 +20,24 @@ import java.sql.Blob;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Goodimg对象", description="")
-public class Goodimg implements Serializable {
+@ApiModel(value="Order对象", description="")
+public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private String id;
 
-    @TableField("goodImg")
-    private Blob goodImg;
+    @TableField("goodID")
+    private String goodID;
+
+    @TableField("goodTilte")
+    private String goodTilte;
+
+    @TableField("orderDate")
+    private Date orderDate;
+
+    @TableField("goodDes")
+    private String goodDes;
 
 
 }
