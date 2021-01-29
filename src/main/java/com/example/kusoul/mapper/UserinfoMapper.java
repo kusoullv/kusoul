@@ -1,7 +1,7 @@
 package com.example.kusoul.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.kusoul.domain.Userinfo;
+import com.example.kusoul.bean.Userinfo;
 
 /**
  * <p>

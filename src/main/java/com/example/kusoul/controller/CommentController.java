@@ -1,7 +1,8 @@
 package com.example.kusoul.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.example.kusoul.domain.Comment;
+import com.example.kusoul.bean.Comment;
+
 import com.example.kusoul.service.ICommentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

@@ -3,7 +3,7 @@ package com.example.kusoul.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.kusoul.domain.Order;
+import com.example.kusoul.bean.Order;
 
 /**
  * <p>

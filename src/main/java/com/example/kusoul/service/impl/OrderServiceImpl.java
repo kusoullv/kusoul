@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.kusoul.domain.Order;
+import com.example.kusoul.bean.Order;
 import com.example.kusoul.mapper.OrderMapper;
 import com.example.kusoul.service.IOrderService;
 import org.springframework.stereotype.Service;

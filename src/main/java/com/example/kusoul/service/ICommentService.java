@@ -1,8 +1,9 @@
 package com.example.kusoul.service;
 
+
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.kusoul.domain.Comment;
+import com.example.kusoul.bean.Comment;
 
 /**
  * <p>

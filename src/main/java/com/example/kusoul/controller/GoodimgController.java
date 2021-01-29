@@ -2,7 +2,7 @@ package com.example.kusoul.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.example.kusoul.domain.Goodimg;
+import com.example.kusoul.bean.Goodimg;
 import com.example.kusoul.service.IGoodimgService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -31,7 +31,6 @@ public class GoodimgController {
 
     @Resource
     private IGoodimgService goodimgService;
-
 
     @ApiOperation(value = "新增")
     @PostMapping()

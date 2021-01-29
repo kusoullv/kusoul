@@ -2,7 +2,7 @@ package com.example.kusoul.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.example.kusoul.domain.Userinfo;
+import com.example.kusoul.bean.Userinfo;
 import com.example.kusoul.service.IUserinfoService;
 
 import io.swagger.annotations.Api;

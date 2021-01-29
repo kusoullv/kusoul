@@ -2,7 +2,7 @@ package com.example.kusoul.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.example.kusoul.domain.Order;
+import com.example.kusoul.bean.Order;
 import com.example.kusoul.service.IOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
