@@ -8,9 +8,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.kusoul.bean.Userinfo;
 import com.example.kusoul.mapper.UserinfoMapper;
 import com.example.kusoul.service.IUserinfoService;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,7 +19,7 @@ import org.springframework.stereotype.Service;
  * @since 2021-01-28
  */
 @Service
-public class UserinfoServiceImpl extends ServiceImpl<UserinfoMapper, Userinfo> implements IUserinfoService, UserDetailsService {
+public class UserinfoServiceImpl extends ServiceImpl<UserinfoMapper, Userinfo> implements IUserinfoService {
 
     @Override
     public IPage<Userinfo> findListByPage(Integer page, Integer pageCount){
@@ -52,22 +49,5 @@ public class UserinfoServiceImpl extends ServiceImpl<UserinfoMapper, Userinfo> i
         return  baseMapper.selectById(id);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-//
-//        QueryWrapper queryWrapper = new QueryWrapper();
-//        queryWrapper.eq("username", username);
-//        baseMapper.selectOne(queryWrapper);
-//        User user = userMapper.loadUserByUsername(username);
-//        if (user == null) {
-//            throw new UsernameNotFoundException("账户不存在!");
-//        }
-//        user.setRoles(userMapper.getUserRolesByUid(user.getId()));
-//        return user;
-
-        String sss = "sdfsdf";
-        sss = sss +"sdfds";
-        return null;
-    }
 }

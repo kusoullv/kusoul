@@ -1,5 +1,6 @@
 package com.example.kusoul.bean;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,34 +24,12 @@ public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
+    @TableField("ID")
     private Integer id;
-
+    @TableField("NAME")
     private String name;
-
+    @TableField("NAMEZH")
     private String nameZh;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNameZh() {
-        return nameZh;
-    }
-
-    public void setNameZh(String nameZh) {
-        this.nameZh = nameZh;
-    }
 }

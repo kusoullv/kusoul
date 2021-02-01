@@ -27,8 +27,6 @@ public class CustomFilterInvocationSecurityMetadataSource implements FilterInvoc
         String requestUrl = ((FilterInvocation) object).getRequestUrl();
         // 获取db所有menu菜单
         List<Menu> allMenus = menuService.list();
-        String ss = "sdf";
-        ss = ss +"sdf";
         allMenus.forEach(item -> {
             if(antPathMatcher.match(item.getPattern(),requestUrl)) {
                 List<Role> roles = item.getRoles();
