@@ -1,13 +1,13 @@
 package com.example.kusoul.bean;
 
-import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.sql.Blob;
 
 /**
  * <p>
@@ -15,20 +15,22 @@ import java.sql.Blob;
  * </p>
  *
  * @author maqh
- * @since 2021-01-28
+ * @since 2021-02-01
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Goodimg对象", description="")
-public class Goodimg implements Serializable {
+@ApiModel(value="UserRole对象", description="")
+public class UserRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
-    @TableField("goodImg")
-    private Blob goodImg;
+    private Integer uid;
+
+    private Integer rid;
 
 
 }

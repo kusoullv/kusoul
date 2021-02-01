@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.maqh.demo.dao.ss.GoodMapper">
+<mapper namespace="com.example.kusoul.mapper.GoodMapper">
 
         <!-- 通用查询映射结果 -->
-        <resultMap id="BaseResultMap" type="com.maqh.demo.domain.ss.Good">
+        <resultMap id="BaseResultMap" type="com.example.kusoul.bean.Good">
                     <result column="id" property="id"/>
                     <result column="title" property="title"/>
                     <result column="description" property="description"/>

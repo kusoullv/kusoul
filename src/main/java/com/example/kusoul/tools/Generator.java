@@ -94,7 +94,7 @@ public class Generator {
             }
         };
 
-        // 如果模板引擎是 freemarker
+        // 如果模板引擎是 freemarker,
         String templatePath = "/templates/mapper.xml.ftl";
 
         // 自定义输出配置

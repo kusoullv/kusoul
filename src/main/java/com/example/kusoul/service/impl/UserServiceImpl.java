@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.kusoul.bean.Userinfo;
-import com.example.kusoul.mapper.UserinfoMapper;
-import com.example.kusoul.service.IUserinfoService;
+import com.example.kusoul.bean.User;
+import com.example.kusoul.mapper.UserMapper;
+import com.example.kusoul.service.IUserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,19 +22,19 @@ import org.springframework.stereotype.Service;
  * @since 2021-01-28
  */
 @Service
-public class UserinfoServiceImpl extends ServiceImpl<UserinfoMapper, Userinfo> implements IUserinfoService, UserDetailsService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService, UserDetailsService {
 
     @Override
-    public IPage<Userinfo> findListByPage(Integer page, Integer pageCount){
-        IPage<Userinfo> wherePage = new Page<>(page, pageCount);
-        Userinfo where = new Userinfo();
+    public IPage<User> findListByPage(Integer page, Integer pageCount){
+        IPage<User> wherePage = new Page<>(page, pageCount);
+        User where = new User();
 
         return   baseMapper.selectPage(wherePage, Wrappers.query(where));
     }
 
     @Override
-    public int add(Userinfo userinfo){
-        return baseMapper.insert(userinfo);
+    public int add(User User){
+        return baseMapper.insert(User);
     }
 
     @Override
@@ -43,12 +43,12 @@ public class UserinfoServiceImpl extends ServiceImpl<UserinfoMapper, Userinfo> i
     }
 
     @Override
-    public int updateData(Userinfo userinfo){
-        return baseMapper.updateById(userinfo);
+    public int updateData(User User){
+        return baseMapper.updateById(User);
     }
 
     @Override
-    public Userinfo findById(Long id){
+    public User findById(Long id){
         return  baseMapper.selectById(id);
     }
 
@@ -66,8 +66,9 @@ public class UserinfoServiceImpl extends ServiceImpl<UserinfoMapper, Userinfo> i
 //        user.setRoles(userMapper.getUserRolesByUid(user.getId()));
 //        return user;
 
-        String sss = "sdfsdf";
-        sss = sss +"sdfds";
+
+        String ss = "sfd";
+        ss =ss + 1;
         return null;
     }
 }

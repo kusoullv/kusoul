@@ -1,8 +1,11 @@
 package com.example.kusoul.mapper;
 
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.kusoul.bean.Goodimg;
+import com.example.kusoul.bean.Menu;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -10,9 +13,11 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author maqh
- * @since 2021-01-28
+ * @since 2021-02-01
  */
 @Mapper
-public interface GoodimgMapper extends BaseMapper<Goodimg> {
+public interface MenuMapper extends BaseMapper<Menu> {
+
+    List<Menu> getAllMenus();
 
 }

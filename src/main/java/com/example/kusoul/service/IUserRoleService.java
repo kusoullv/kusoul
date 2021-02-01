@@ -1,9 +1,8 @@
 package com.example.kusoul.service;
 
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.kusoul.bean.Goodimg;
+import com.example.kusoul.bean.UserRole;
 
 /**
  * <p>
@@ -11,26 +10,26 @@ import com.example.kusoul.bean.Goodimg;
  * </p>
  *
  * @author maqh
- * @since 2021-01-28
+ * @since 2021-02-01
  */
-public interface IGoodimgService extends IService<Goodimg> {
+public interface IUserRoleService extends IService<UserRole> {
 
     /**
      * 查询分页数据
      *
      * @param page      页码
      * @param pageCount 每页条数
-     * @return IPage<Goodimg>
+     * @return IPage<UserRole>
      */
-    IPage<Goodimg> findListByPage(Integer page, Integer pageCount);
+    IPage<UserRole> findListByPage(Integer page, Integer pageCount);
 
     /**
      * 添加
      *
-     * @param goodimg 
+     * @param userRole 
      * @return int
      */
-    int add(Goodimg goodimg);
+    int add(UserRole userRole);
 
     /**
      * 删除
@@ -43,16 +42,16 @@ public interface IGoodimgService extends IService<Goodimg> {
     /**
      * 修改
      *
-     * @param goodimg 
+     * @param userRole 
      * @return int
      */
-    int updateData(Goodimg goodimg);
+    int updateData(UserRole userRole);
 
     /**
      * id查询数据
      *
      * @param id id
-     * @return Goodimg
+     * @return UserRole
      */
-    Goodimg findById(Long id);
+    UserRole findById(Long id);
 }

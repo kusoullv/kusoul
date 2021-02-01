@@ -1,9 +1,8 @@
 package com.example.kusoul.controller;
 
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.example.kusoul.bean.Goodimg;
-import com.example.kusoul.service.IGoodimgService;
+import com.example.kusoul.bean.UserRole;
+import com.example.kusoul.service.IUserRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -20,34 +19,35 @@ import javax.annotation.Resource;
  * </p>
  *
  * @author maqh
- * @since 2021-01-28
+ * @since 2021-02-01
  */
 @Api(tags = {""})
 @RestController
-@RequestMapping("/goodimg")
-public class GoodimgController {
+@RequestMapping("/user-role")
+public class UserRoleController {
 
     private Logger log = LoggerFactory.getLogger(getClass());
 
     @Resource
-    private IGoodimgService goodimgService;
+    private IUserRoleService userRoleService;
+
 
     @ApiOperation(value = "新增")
     @PostMapping()
-    public int add(@RequestBody Goodimg goodimg){
-        return goodimgService.add(goodimg);
+    public int add(@RequestBody UserRole userRole){
+        return userRoleService.add(userRole);
     }
 
     @ApiOperation(value = "删除")
     @DeleteMapping("{id}")
     public int delete(@PathVariable("id") Long id){
-        return goodimgService.delete(id);
+        return userRoleService.delete(id);
     }
 
     @ApiOperation(value = "更新")
     @PutMapping()
-    public int update(@RequestBody Goodimg goodimg){
-        return goodimgService.updateData(goodimg);
+    public int update(@RequestBody UserRole userRole){
+        return userRoleService.updateData(userRole);
     }
 
     @ApiOperation(value = "查询分页数据")
@@ -56,15 +56,15 @@ public class GoodimgController {
         @ApiImplicitParam(name = "pageCount", value = "每页条数")
     })
     @GetMapping()
-    public IPage<Goodimg> findListByPage(@RequestParam Integer page,
-                                         @RequestParam Integer pageCount){
-        return goodimgService.findListByPage(page, pageCount);
+    public IPage<UserRole> findListByPage(@RequestParam Integer page,
+                                   @RequestParam Integer pageCount){
+        return userRoleService.findListByPage(page, pageCount);
     }
 
     @ApiOperation(value = "id查询")
     @GetMapping("{id}")
-    public Goodimg findById(@PathVariable Long id){
-        return goodimgService.findById(id);
+    public UserRole findById(@PathVariable Long id){
+        return userRoleService.findById(id);
     }
 
 }

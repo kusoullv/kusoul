@@ -1,13 +1,12 @@
 package com.example.kusoul.service.impl;
 
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.kusoul.bean.Goodimg;
-import com.example.kusoul.mapper.GoodimgMapper;
-import com.example.kusoul.service.IGoodimgService;
+import com.example.kusoul.bean.Role;
+import com.example.kusoul.mapper.RoleMapper;
+import com.example.kusoul.service.IRoleService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,22 +15,22 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author maqh
- * @since 2021-01-28
+ * @since 2021-02-01
  */
 @Service
-public class GoodimgServiceImpl extends ServiceImpl<GoodimgMapper, Goodimg> implements IGoodimgService {
+public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
 
     @Override
-    public IPage<Goodimg> findListByPage(Integer page, Integer pageCount){
-        IPage<Goodimg> wherePage = new Page<>(page, pageCount);
-        Goodimg where = new Goodimg();
+    public  IPage<Role> findListByPage(Integer page, Integer pageCount){
+        IPage<Role> wherePage = new Page<>(page, pageCount);
+        Role where = new Role();
 
         return   baseMapper.selectPage(wherePage, Wrappers.query(where));
     }
 
     @Override
-    public int add(Goodimg goodimg){
-        return baseMapper.insert(goodimg);
+    public int add(Role role){
+        return baseMapper.insert(role);
     }
 
     @Override
@@ -40,12 +39,12 @@ public class GoodimgServiceImpl extends ServiceImpl<GoodimgMapper, Goodimg> impl
     }
 
     @Override
-    public int updateData(Goodimg goodimg){
-        return baseMapper.updateById(goodimg);
+    public int updateData(Role role){
+        return baseMapper.updateById(role);
     }
 
     @Override
-    public Goodimg findById(Long id){
+    public Role findById(Long id){
         return  baseMapper.selectById(id);
     }
 }
