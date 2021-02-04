@@ -30,6 +30,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
     UserServiceImpl userService;
+    @Resource
+    private JwtAuthorizationTokenFilter authorizationTokenFilter; //JwtToken解析并生成authentication身份信息过滤器
+    @Resource
+    private SecuritySuccessHandler securitySuccessHandler;
+    @Resource
+    private SecurityFailureHandler securityFailureHandler;
 
     @Bean
     RoleHierarchy roleHierarchy() {
@@ -58,10 +64,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        System.out.println(encodedPassword);
 
         // JwtToken解析并生成authentication身份信息过滤器
-        http.addFilterBefore(new JwtAuthorizationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authorizationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         // 未登录时：返回状态码401
-        http.exceptionHandling().authenticationEntryPoint(new UrlAuthenticationEntryPoint());
+//        http.exceptionHandling().authenticationEntryPoint(new UrlAuthenticationEntryPoint());
 
         // 无权访问时：返回状态码403
         http.exceptionHandling().accessDeniedHandler(new UrlAccessDeniedHandler());
@@ -84,8 +90,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login")
                 .usernameParameter("name")
                 .passwordParameter("password")
-                .successHandler(new SecuritySuccessHandler())
-                .failureHandler(new SecurityFailureHandler())
+                .successHandler(securitySuccessHandler)
+                .failureHandler(securityFailureHandler)
                 .permitAll()
                 .and()
                 .logout()

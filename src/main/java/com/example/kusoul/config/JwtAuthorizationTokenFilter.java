@@ -40,7 +40,7 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
             FilterChain filterChain) throws ServletException, IOException {
 
         String token = request.getHeader(tokenHeader);
-        logger.info(String.format("JwtAuthorizationTokenFilter >> token:{}",token));
+         logger.info(String.format("JwtAuthorizationTokenFilter >> token:{}",token));
         if(token==null || !token.startsWith(tokenPrefix + " ")) {
             filterChain.doFilter(request,response);
             return;
