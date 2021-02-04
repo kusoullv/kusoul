@@ -73,6 +73,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
         QueryWrapper queryWrapper1 = new QueryWrapper();
         queryWrapper1.eq("id", user.getId());
+
         List<Role> roless = roleMapper.selectList(queryWrapper1);
         user.setRoles(roless);
         return user;

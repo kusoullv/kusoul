@@ -7,6 +7,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -45,7 +46,7 @@ public class SecuritySuccessHandler implements AuthenticationSuccessHandler {
         Object principal = authentication.getPrincipal();
         ResponseUtil responseUtil = new ResponseUtil();
         responseUtil.setSuccess(true);
-        responseUtil.setCode("200");
+        responseUtil.setCode(String.valueOf(HttpStatus.OK.value()));
         responseUtil.setMessage("Login Success!");
         // 生成token并设置响应头
         String username = ((User) principal).getUsername(); //表单输入的用户名
@@ -59,10 +60,10 @@ public class SecuritySuccessHandler implements AuthenticationSuccessHandler {
 //                .setExpiration(new Date(System.currentTimeMillis() + tokenExpiration)) //设置token过期时间
                 .signWith(SignatureAlgorithm.HS512, tokenSecret).compact(); //设置token签名算法及秘钥
 
-        PrintWriter pw = response.getWriter();
         response.addHeader(tokenHeader, tokenPrefix + " " + token); //设置token响应头
         response.setContentType("application/json;charset=utf-8");
-        response.setStatus(200);
+        response.setStatus(HttpStatus.OK.value());
+        PrintWriter pw = response.getWriter();
         pw.write(JSONObject.toJSONString(responseUtil));
         pw.flush();
         pw.close();

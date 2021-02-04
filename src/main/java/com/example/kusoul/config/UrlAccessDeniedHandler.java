@@ -2,6 +2,7 @@ package com.example.kusoul.config;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.kusoul.tools.ResponseUtil;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
@@ -22,13 +23,13 @@ public class UrlAccessDeniedHandler implements AccessDeniedHandler {
         // 自定义权限不足处理器：返回状态码403
         ResponseUtil responseUtil = new ResponseUtil();
         responseUtil.setSuccess(false);
-        responseUtil.setCode("403");
+        responseUtil.setCode(String.valueOf(HttpStatus.FORBIDDEN.value()));
         responseUtil.setMessage(accessDeniedException.getMessage());
         responseUtil.setData(null);
         // 返回json数据
         response.setContentType("application/json;charset-utf-8");
         response.setCharacterEncoding("UTF-8");
-        response.setStatus(403);
+        response.setStatus(HttpStatus.FORBIDDEN.value());
         PrintWriter pw = response.getWriter();
         pw.write(JSONObject.toJSONString(responseUtil));
         pw.flush();
