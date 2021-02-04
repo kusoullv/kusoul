@@ -75,7 +75,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // 将session策略设置为无状态的,通过token进行登录认证
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-
+        http.cors()
+                .and().requestMatchers().antMatchers("/login");
         http.authorizeRequests()
                 .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                     @Override
@@ -88,7 +89,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")
-                .usernameParameter("name")
+                .usernameParameter("username")
                 .passwordParameter("password")
                 .successHandler(securitySuccessHandler)
                 .failureHandler(securityFailureHandler)
