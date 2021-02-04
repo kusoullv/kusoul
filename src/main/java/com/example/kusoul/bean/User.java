@@ -50,6 +50,7 @@ public class User implements UserDetails {
         return enabled;
     }
 
+
     public Integer getId() {
         return id;
     }
