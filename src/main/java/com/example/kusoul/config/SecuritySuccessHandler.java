@@ -51,7 +51,8 @@ public class SecuritySuccessHandler implements AuthenticationSuccessHandler {
         // 生成token并设置响应头
         String username = ((User) principal).getUsername(); //表单输入的用户名
         Claims claims = Jwts.claims();
-        responseUtil.setData(claims);
+
+
 
         claims.put("role", authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()));
         String token = Jwts.builder()
@@ -60,6 +61,8 @@ public class SecuritySuccessHandler implements AuthenticationSuccessHandler {
 //                .setExpiration(new Date(System.currentTimeMillis() + tokenExpiration)) //设置token过期时间
                 .signWith(SignatureAlgorithm.HS512, tokenSecret).compact(); //设置token签名算法及秘钥
 
+        claims.put("token",token);
+        responseUtil.setData(claims);
         response.addHeader(tokenHeader, tokenPrefix + " " + token); //设置token响应头
         response.setContentType("application/json;charset=utf-8");
         response.setStatus(HttpStatus.OK.value());
