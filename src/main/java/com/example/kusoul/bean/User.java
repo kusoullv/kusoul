@@ -10,11 +10,14 @@ import java.util.Collection;
 import java.util.List;
 
 public class User implements UserDetails {
+
     private Integer id;
     private String username;
     private String password;
     private Boolean enabled;
     private Boolean locked;
+
+
     @TableField(exist = false)
     private List<Role> roles;
     @Override
@@ -86,4 +89,5 @@ public class User implements UserDetails {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+
 }
