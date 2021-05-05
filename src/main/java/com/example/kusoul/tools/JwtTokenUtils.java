@@ -1,5 +1,6 @@
 package com.example.kusoul.tools;
 
+import com.example.kusoul.bean.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 @Component
 public class JwtTokenUtils {
@@ -32,17 +34,17 @@ public class JwtTokenUtils {
     private String roleKey;
 
     // 创建token
-    public String createToken(String username,Object role, boolean isRememberMe) {
+    public String createToken(String username, List<Role> role, boolean isRememberMe) {
         long expiration = isRememberMe ? Long.parseLong(emeberExpiration) : Long.parseLong(tokenExpiration);
         HashMap<String, Object> map = new HashMap<>();
         map.put(roleKey, role);
         return Jwts.builder()
-                .signWith(SignatureAlgorithm.HS512, tokenSecret)
-                .setClaims(map)
-                // .setIssuer(ISS)
-                .setSubject(username)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expiration * 1000))
+                .signWith(SignatureAlgorithm.HS512, tokenSecret) // 签证(加密方式，我加密秘钥)
+                .setClaims(map) // 签发声明
+                .setIssuer("kusoul")// 签发者
+                .setIssuedAt(new Date()) // 签发时间
+                .setSubject(username) // 代表这个JWT的主体，即它的所有人
+                .setExpiration(new Date(System.currentTimeMillis() + expiration * 1000)) // jwt 过期时间
                 .compact();
     }
 

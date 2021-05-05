@@ -1,6 +1,7 @@
 package com.example.kusoul.config;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.kusoul.bean.Role;
 import com.example.kusoul.bean.User;
 import com.example.kusoul.tools.JwtTokenUtils;
 import com.example.kusoul.tools.ResponseUtil;
@@ -9,7 +10,6 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -20,9 +20,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Component
 public class SecuritySuccessHandler implements AuthenticationSuccessHandler {
@@ -50,13 +51,19 @@ public class SecuritySuccessHandler implements AuthenticationSuccessHandler {
         // 生成token并设置响应头
         String username = ((User) principal).getUsername(); //表单输入的用户名
         // 用户角色
-        String role = JSONObject.toJSONString(((User) principal).getRoles());
+        List<Role> roleList = ((User) principal).getRoles();
+
+        List<String> list = new ArrayList<>();
+        roleList.forEach(item-> {
+            list.add(item.getName());
+        });
+
         Claims claims = Jwts.claims();
-        claims.put("role", authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()));
+        claims.put("role", list);
         // 记住我
         boolean isRememberMe = false;
         // 取得token
-        String token = jwtTokenUtils.createToken(username, claims, isRememberMe);
+        String token = jwtTokenUtils.createToken(username, roleList, isRememberMe);
         Map<String,Object> map = new HashMap<>();
         map.put("token", token);
         map.put("role",claims);

@@ -1,7 +1,6 @@
 package com.example.kusoul.config;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
+import com.example.kusoul.tools.JwtTokenUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -9,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.annotation.Resource;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +33,9 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
     @Value("${jwt.secret}")
     private String tokenSecret;
 
+    @Resource
+    private JwtTokenUtils jwtTokenUtils;
+
     @Override
     protected void doFilterInternal(
             HttpServletRequest request,
@@ -45,17 +48,22 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
             filterChain.doFilter(request,response);
             return;
         }
-        Claims claims;
-        try {
-            claims = Jwts.parser().setSigningKey(tokenSecret).parseClaimsJws(token.replace(tokenPrefix + " ", "")).getBody();
-        } catch (Exception e) {
-            logger.error(String.format("JwtToken validity! error=[0]",e.getMessage()));
-            filterChain.doFilter(request, response);
-            return;
-        }
+//        Claims claims;
+//        try {
+//            // claims = Jwts.parser().setSigningKey(tokenSecret).parseClaimsJws(token.replace(tokenPrefix + " ", "")).getBody();
+//
+//            claims = jwtTokenUtils
+//        } catch (Exception e) {
+//            logger.error(String.format("JwtToken validity! error=[0]",e.getMessage()));
+//            filterChain.doFilter(request, response);
+//            return;
+//        }
 
-        String userName = claims.getSubject();
-        List<String> roles = claims.get("role", List.class);
+        //         List<String> roles = claims.get("role", List.class);
+        String userName = jwtTokenUtils.getUsername(token);
+        // List<String> roles = jwtTokenUtils.getUserRole(token);
+        String roles11 = jwtTokenUtils.getUserRole(token);
+        List<String> roles= null;
         List<SimpleGrantedAuthority> authorities =
                 roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
         if (null != userName) {

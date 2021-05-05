@@ -19,4 +19,5 @@
             id, adresssID, flg, phoneNumber, createDate, createID, updateDate, updateID
         </sql>
 
+
 </mapper>

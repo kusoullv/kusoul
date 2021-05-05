@@ -17,11 +17,14 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import java.io.IOException;
 
 @Configuration
@@ -36,6 +39,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private SecuritySuccessHandler securitySuccessHandler;
     @Resource
     private SecurityFailureHandler securityFailureHandler;
+    @Resource
+    private DataSource dataSource;
+    @Resource
+    private PersistentTokenRepository persistentTokenRepository;
 
     @Bean
     RoleHierarchy roleHierarchy() {
@@ -74,6 +81,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // 将session策略设置为无状态的,通过token进行登录认证
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+        // 记住我
+        http.rememberMe().tokenRepository(persistentTokenRepository).tokenValiditySeconds(60)
+        .rememberMeParameter("remember").userDetailsService(userService);
 
         http.cors()
                 .and().requestMatchers().antMatchers("/login");
@@ -124,5 +135,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     CustomAccessDecisionManager cadm() {
         return  new CustomAccessDecisionManager();
     }
+
+    @Bean
+    PersistentTokenRepository persistentTokenRepository() {
+        JdbcTokenRepositoryImpl jdbcTokenRepositoryImpl = new JdbcTokenRepositoryImpl();
+        // 设置数据源
+        jdbcTokenRepositoryImpl.setDataSource(dataSource);
+        // 自动自动建表
+        jdbcTokenRepositoryImpl.setCreateTableOnStartup(true);
+        return jdbcTokenRepositoryImpl;
+    }
+
+
 
 }
