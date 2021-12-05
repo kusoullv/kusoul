@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@SuppressWarnings("unchecked")
+
 @Component
 public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
 

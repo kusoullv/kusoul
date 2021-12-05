@@ -1,4 +1,4 @@
-package com.example.kusoul.tools;
+package com.example.kusoul.config;
 
 
 import org.springframework.context.annotation.Bean;

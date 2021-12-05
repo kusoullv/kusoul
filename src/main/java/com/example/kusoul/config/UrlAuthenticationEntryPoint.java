@@ -12,13 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * 当未登录或者token失效访问接口时，自定义的返回结果
+ */
 @SuppressWarnings("Duplicates")
 @Component
 public class UrlAuthenticationEntryPoint implements AuthenticationEntryPoint {
-
-    // 自定义未登录时：返回状态码401
-
-
     @Override
     public void commence(
             HttpServletRequest request,

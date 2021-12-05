@@ -10,7 +10,6 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -44,7 +43,7 @@ public class AddressController {
         return addressService.delete(id);
     }
 
-    @ApiOperation(value = "更新")
+    @ApiOperation(value = "更新", notes = "invokePost说明", httpMethod = "POST")
     @PutMapping("update")
     public int update(@RequestBody Address address){
         return addressService.updateData(address);
